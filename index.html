@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="BDRMD — base de dados de lançamentos de rock e metal.">
+  <title>BDRMD</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand-mark" aria-hidden="true">✯</div>
+      <div class="brand-copy">
+        <p class="eyebrow">BRUTAL DISPLAY OF RAW METAL DATA</p>
+        <h1>BDRMD<span>.</span></h1>
+        <p class="intro">Uma ferramenta da Inaudível Por Favor</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats" aria-label="Estatísticas da base">
+      <div class="stat"><span class="stat-label">Lançamentos</span><strong id="stat-releases">—</strong></div>
+      <div class="stat"><span class="stat-label">Bandas</span><strong id="stat-bands">—</strong></div>
+      <div class="stat"><span class="stat-label">Aniversários hoje</span><strong id="stat-anniversaries">—</strong></div>
+    </section>
+
+    <section class="toolbar" aria-label="Pesquisa e filtros">
+      <label class="search-wrap">
+        <span class="sr-only">Pesquisar lançamentos</span>
+        <span aria-hidden="true">⌕</span>
+        <input id="search" type="search" placeholder="Buscar banda ou lançamento..." autocomplete="off">
+      </label>
+      <label class="filter-label">Tipo
+        <select id="type-filter">
+          <option value="">Todos os tipos</option>
+          <option value="album">Álbum</option>
+          <option value="ep">EP</option>
+          <option value="single">Single</option>
+          <option value="compilation">Compilação</option>
+          <!-- <option value="demo">Demo</option> -->
+          <option value="live">Ao vivo</option>
+        </select>
+      </label>
+      <label class="filter-label">Ano
+        <select id="year-filter"><option value="">Todos os anos</option></select>
+      </label>
+      <label class="filter-label sort-label">Ordenar por
+        <select id="sort">
+          <option value="date-desc">Data: mais recente</option>
+          <option value="date-asc">Data: mais antiga</option>
+          <option value="title-asc">Título: A–Z</option>
+          <option value="band-asc">Banda: A–Z</option>
+        </select>
+      </label>
+      <button id="clear-filters" class="button button-quiet" type="button">Limpar filtros</button>
+    </section>
+
+    <section class="results-head">
+      <div>
+        <h2>Lançamentos</h2>
+        <p id="result-count" aria-live="polite">Carregando dados…</p>
+      </div>
+      <p id="source-status" class="source-status">Inicializando base</p>
+    </section>
+
+    <div id="error" class="notice error" role="alert" hidden></div>
+    <div id="loading" class="notice" role="status">Carregando lançamentos…</div>
+    <div id="empty" class="notice" hidden>Nenhum lançamento corresponde à pesquisa.</div>
+
+    <div class="table-wrap" id="table-wrap" hidden>
+      <table>
+        <thead><tr><th>Banda</th><th>Título</th><th>Data</th><th>Tipo</th><th>Aniversário</th></tr></thead>
+        <tbody id="release-rows"></tbody>
+      </table>
+    </div>
+    <div id="mobile-results" class="mobile-results" hidden></div>
+
+    <nav class="pagination" aria-label="Paginação">
+      <button id="prev" class="button" type="button">← Anterior</button>
+      <span id="page-label">Página 1</span>
+      <button id="next" class="button" type="button">Próxima →</button>
+      <label class="per-page">Por página
+        <select id="page-size"><option value="25">25</option><option value="50" selected>50</option><option value="100">100</option></select>
+      </label>
+    </nav>
+    <p class="footnote">As grafias e os caracteres dos títulos são preservados conforme a fonte. A pesquisa ignora diferenças entre maiúsculas/minúsculas para facilitar a localização.</p>
+  </main>
+  <footer><span>BDRMD</span> · BRUTAL DISPLAY OF RAW METAL DATA</footer>
+  <script src="config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
